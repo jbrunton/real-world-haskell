@@ -1,0 +1,17 @@
+Question 1.
+
+Integer types: Num a => a
+Q: Why not Integer per RWH?
+
+sqrt 16:: Floating a => a
+succ 6 :: (Enum a, Num a) => a
+
+truncate pi :: Integral b => b
+
+round 3.5 :: Integral b => b
+
+Question 2.
+
+x :: Num p => p = _
+
+Question 3.
