@@ -69,19 +69,17 @@ data Direction = Left | Right | Straight
   deriving Show
 
 -- Question 10.
-type Vec2 = (Double, Double)
+data Vec2 = Vec2 { getX :: Double, getY :: Double }
+  deriving Show
 
-dotp :: Vec2 -> Vec2 -> Double
-dotp (x1, y1) (x2, y2) = x1 * x2 + y1 * y2
-
-size :: Vec2 -> Double
-size (x, y) = sqrt (x**2 + y**2)
+angleBetween :: Vec2 -> Vec2 -> Vec2 -> Double
+angleBetween a b c = atan2 (getY v2) (getX v2) - atan2 (getY v1) (getX v1)
+  where v1 = Vec2 (getX b - getX a) (getY b - getY a)
+        v2 = Vec2 (getX c - getX b) (getY c - getY b)
 
 direction :: Vec2 -> Vec2 -> Vec2 -> Direction
-direction (ax, ay) (bx, by) (cx, cy) = dir alpha
-  where alpha = atan2 (snd v2) (fst v2) - atan2 (snd v1) (fst v1)
-        dir 0 = Main.Straight
-        dir a | a < 0 = Main.Left
-        dir a | a > 0 = Main.Right
-        v1 = (bx - ax, by - ay)
-        v2 = (cx - bx, cy - by)
+direction a b c
+  | alpha == 0 = Main.Straight
+  | alpha > 0 = Main.Left
+  | alpha < 0 = Main.Right
+  where alpha = angleBetween a b c
