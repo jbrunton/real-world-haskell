@@ -83,3 +83,9 @@ direction a b c
   | alpha > 0 = Main.Left
   | alpha < 0 = Main.Right
   where alpha = angleBetween a b c
+
+-- Question 11.
+
+directions :: [Vec2] -> [Direction]
+directions (p1:p2:p3:ps) = (direction p1 p2 p3) : (directions (p2:p3:ps))
+directions _ = []
