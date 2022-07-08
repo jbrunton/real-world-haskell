@@ -24,4 +24,4 @@ lastButOne3 = head.(drop 1).reverse
 -- Question 3.
 -- lastButOne [1] -> Non-exhaustive patterns in function lastButOne
 -- lastButOne2 [2] -> Exception: Prelude.head: empty list
--- lastButOne3 is equivalent to two, but written in 
+-- lastButOne3 is equivalent to two
