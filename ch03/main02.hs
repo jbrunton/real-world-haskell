@@ -1,19 +1,5 @@
 import Data.List
 
--- Exercises 1.
-
--- Question 1.
-data List a = Cons a (List a)
-            | Nil
-              deriving (Show)
-
--- Question 2.
-toList Nil = []
-toList (Cons x xs) = x:(toList xs)
-
-fromList [] = Nil
-fromList (x:xs) = Cons x (fromList xs)
-
 -- Exercises 2.
 
 -- Question 1.
@@ -89,3 +75,8 @@ direction a b c
 directions :: [Vec2] -> [Direction]
 directions (p1:p2:p3:ps) = (direction p1 p2 p3) : (directions (p2:p3:ps))
 directions _ = []
+
+-- Question 12.
+
+minPoint :: [Vec2] -> Vec2
+minPoint = head . sortOn (\v -> getY v) . sortOn (\v -> getX v)
